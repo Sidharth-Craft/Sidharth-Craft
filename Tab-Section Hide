@@ -1,0 +1,24 @@
+#Create a Tab Hide 
+
+function hideshoweducationtab(executionContext)
+{
+
+       //To get the Form Parameter
+            var formContext = executionContext.getFormContext();
+
+      // To get the Value from Form Context
+            var isEducated = formContext.getAttribute("t1_iseducated").getValue();
+
+
+if  (isEducated == True)
+   {
+            formContext.ui.tab.get(tab_1).setVisible(false);
+   }
+else 
+   {
+            formContext.ui.tab.get(tab_1).setVisible(True);
+
+   }
+}
+
+#Create a Section Hide 
