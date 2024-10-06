@@ -12,13 +12,16 @@ function hideshoweducationtab(executionContext)
 
 if  (isEducated == True)
    {
-            formContext.ui.tab.get(tab_1).setVisible(false);
+            formContext.ui.tab.get(tab_1).setVisible(true);
    }
 else 
    {
-            formContext.ui.tab.get(tab_1).setVisible(True);
+            formContext.ui.tab.get(tab_1).setVisible(false);
 
    }
 }
 
-#Create a Section Hide 
+#Create a Section Hide
+
+
+
