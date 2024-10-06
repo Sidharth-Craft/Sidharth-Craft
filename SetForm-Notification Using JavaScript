@@ -2,9 +2,10 @@
 
 function setFormNotification(executionContext)
 {
-
+// To get the form parameters
     var formcontext = executionContext.getFormContext();
-   
+
+// To get the value from Form Context
     var cibilscore = formContext.getAttribute("").getFormContext();
 
 // Cibilscore notification
