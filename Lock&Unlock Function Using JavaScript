@@ -3,8 +3,10 @@
 
 function lockunlockbillingcard(executionContext) 
 {
+// To get the form parameters
     var formcontext = executionContext.getFormContext();
 
+// To get the value from Form Context
     var billpayedby = formContext.getAttribute("t1_billpayedby").getValue();
 
     // bill payed by is not null
@@ -24,8 +26,10 @@ function lockunlockbillingcard(executionContext)
 
 function lockunlockbillingcard(executionContext) 
 {
+// To get the form parameters
    var formContext = executionContext.getFormContext();
 
+// To get the value from Form Context
    var debitCardIssued = formContext.getAttribute("t1_debitCardIssued").getvalue();
 
 if (debitCardIssued == true)
