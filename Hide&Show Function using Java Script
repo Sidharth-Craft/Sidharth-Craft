@@ -3,11 +3,13 @@
 
 function hideshowbillingcard(executionContext) 
 {
-    var formcontext = executionContext.getFormContext();
 
+// To get the form parameters
+    var formcontext = executionContext.getFormContext();
+// To get the value from Form Context  
     var billpayedby = formContext.getAttribute("t1_billpayedby").getValue();
 
-    // bill Payed By creditcard
+    // bill Payed By creditcard, debitcard, UPI 
     if (billpayedby == 690830000) 
     {
         formContext.getControl("t1_creditcardnumber").setVisible(true);
@@ -44,12 +46,13 @@ function hideshowbillingcard(executionContext)
 function hideShowCardTypeLanguages(executionContext)
 
 {
+// To get the form parameters
      var formContext = executionContext.getFormContext();
 
+// To get the value from Form Context  
      var cardType = formContext.getAttribute("t1_cardType").getValue();
 
 // cardtype equal to Visa
-     
      if (cardType == 603004510) 
  {
    formContext.getControl("t1_cardType").setVisible(true);
