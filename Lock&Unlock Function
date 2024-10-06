@@ -1,0 +1,48 @@
+#JavaScript Code for Lock & Unlock Operation in Dynamics CRM 
+
+
+function lockunlockbillingcard(executionContext) 
+{
+    var formcontext = executionContext.getFormContext();
+
+    var billpayedby = formContext.getAttribute("t1_billpayedby").getValue();
+
+    // bill payed by is not null
+   if (billpayed == null)
+ {
+    formContext.getControl("t1_creditcardnumber").setdisabled(true);
+    formContext.getAttribute("").setrequiredlevel(none)
+ }
+   else (billpayed != null)
+ {
+    formContext.getControl("t1_billpayedby").setdiabled(False);
+    formContext.getAttribute("").setrequiredlevel(required)
+
+ }
+
+}
+
+function lockunlockbillingcard(executionContext) 
+{
+   var formContext = executionContext.getFormContext();
+
+   var debitCardIssued = formContext.getAttribute("t1_debitCardIssued").getvalue();
+
+if (debitCardIssued == true)
+  {
+   formContext.getControl("t1_cardIssuedDate").setDisibled(false);
+   formContext.getAttribute("t1_cardIssuedDate").setRequiredLevel(required)
+
+
+  }
+else 
+  {
+   formContext.getControl(t1_cardIssuedDate").setDisiabled(True);
+   formContext.getAttribute("t1_cardIssuedDate").setRequiredLevel(none)
+
+  }
+
+
+}
+
+
