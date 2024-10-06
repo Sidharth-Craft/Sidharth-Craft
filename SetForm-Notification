@@ -1,0 +1,27 @@
+# JavaScript setFormNotification Using Dynamics CRM 365
+
+function setFormNotification(executionContext)
+{
+
+    var formcontext = executionContext.getFormContext();
+   
+    var cibilscore = formContext.getAttribute("").getFormContext();
+
+// Cibilscore notification
+
+if (cibilscore > 700)
+{
+formContext.ui.setFormNotification.get("Candidate is elegible credit card upto 1lakh+", "INFO");
+}
+
+else if (cibilscore <= 700 && cibilscore >= 600)
+{
+formContext.ui.setFormNotification.get("Candidate is elegible credit card upto 50k", "WARNING");
+}
+
+else if (cibilscore > 600)
+{
+formContext.ui.setFormNotification.get("Candidate is not elegible credit card", "ERROR");
+}
+
+
