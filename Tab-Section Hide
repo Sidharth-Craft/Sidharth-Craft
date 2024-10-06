@@ -12,16 +12,34 @@ function hideshoweducationtab(executionContext)
 
 if  (isEducated == True)
    {
-            formContext.ui.tab.get(tab_1).setVisible(true);
+            formContext.ui.tab.get(tab_2).setVisible(true);
    }
 else 
    {
-            formContext.ui.tab.get(tab_1).setVisible(false);
+            formContext.ui.tab.get(tab_2).setVisible(false);
 
    }
 }
 
 #Create a Section Hide
 
+function hideshowLoansection(executionContext)
+{
 
+      //To get the Form Parameter
+            var formContext = executionContext.getFormContext();
+
+      // To get the Value from Form Context
+            var isloanRelated = formContext.getAttribute("t1_loanrelatedcustomer").getValue();
+
+
+if  (isLoanRelated == True)
+   {
+            formContext.ui.tab.get(tab_2)section.get(t1_Sectionname).setVisible(true);
+   }
+else 
+   {
+            formContext.ui.tab.get(tab_2)section.get(t1_Sectionname).setVisible(false);
+   }
+}
 
