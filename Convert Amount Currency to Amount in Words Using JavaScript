@@ -1,0 +1,64 @@
+function convertAmountToWordsDemo() {
+    // Get the numeric value from the new_amount field
+    var amount = Xrm.Page.getAttribute("new_amount").getValue();
+
+    // Check if the amount is not null or undefined
+    if (amount != null && amount !== undefined) {
+        // Convert the numeric value to words
+        var amountInWords = convertNumberToWords(amount);
+
+        // Set the value in the new_amountinwords field
+        Xrm.Page.getAttribute("new_amountinwords").setValue(amountInWords);
+    }
+}
+
+// Function to convert a numeric value to words
+function convertNumberToWords(n) {
+    if (n < 0)
+        return false;
+    
+    var singleDigit = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+    var doubleDigit = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+    var belowHundred = ['Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+    if (n === 0) return 'Zero';
+
+    // Separate the integer and decimal parts
+    var integerPart = Math.floor(n);
+    var decimalPart = Math.round((n - integerPart) * 100); // Convert decimal to cents
+
+    function translate(n) {
+        var word = "";
+        if (n < 10) {
+            word = singleDigit[n] + '';
+        } else if (n < 20) {
+            word = doubleDigit[n - 10] + ' ';
+        } else if (n < 100) {
+            var rem = translate(n % 10);
+            word = belowHundred[(n - n % 10) / 10 - 2] + ' ' + rem;
+        } else if (n < 1000) {
+            var remainder = translate(n % 100);
+            word = singleDigit[Math.trunc(n / 100)] + ' Hundred ' + remainder;
+        } else if (n < 1000000) {
+            var remainder = translate(n % 1000);
+            word = translate(Math.trunc(n / 1000)) + ' Thousand ' + remainder;
+        } else if (n < 1000000000) {
+            var remainder = translate(n % 1000000);
+            word = translate(Math.trunc(n / 1000000)) + ' Million ' + remainder;
+        } else {
+            var remainder = translate(n % 1000000000);
+            word = translate(Math.trunc(n / 1000000000)) + ' Billion ' + remainder;
+        }
+        return word;
+    }
+
+    // Create the words for the integer part
+    var integerWords = translate(integerPart).trim();
+
+    // Create the words for the decimal part
+    var decimalWords = (decimalPart > 0) ? 'and ' + translate(decimalPart).trim() + ' cents' : '';
+
+    // Construct the final result
+    var result = (integerWords + ' ' + decimalWords).trim();
+    return result;
+}
