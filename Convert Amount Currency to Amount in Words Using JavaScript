@@ -1,6 +1,6 @@
 function convertAmountToWordsDemo() {
     // Get the numeric value from the new_amount field
-    var amount = Xrm.Page.getAttribute("new_amount").getValue();
+    var amount = formContext.getAttribute("new_amount").getValue();
 
     // Check if the amount is not null or undefined
     if (amount != null && amount !== undefined) {
@@ -8,7 +8,7 @@ function convertAmountToWordsDemo() {
         var amountInWords = convertNumberToWords(amount);
 
         // Set the value in the new_amountinwords field
-        Xrm.Page.getAttribute("new_amountinwords").setValue(amountInWords);
+        formContext.getAttribute("new_amountinwords").setValue(amountInWords);
     }
 }
 
